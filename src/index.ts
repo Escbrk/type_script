@@ -116,3 +116,33 @@
 //   age: 23,
 //   role: "Admin",
 // };
+
+// type Goods = {
+//   [key: string]: number;
+// };
+
+// const fruits: Goods = {
+//   apple: 15,
+//   banana: 30,
+//   orange: 30,
+// };
+// const frozenGoods: Goods = {
+//   iceCream: 25,
+//   fish: 30,
+//   berry: 10,
+// };
+
+type Interface = {
+  [key: string]: string | number;
+};
+
+const userInfo: Interface = {
+  name: "Bob",
+  age: 23,
+  country: "Canada",
+};
+
+const bookDetails: Interface = {
+  title: "Bible",
+  pageCount: 350,
+};
