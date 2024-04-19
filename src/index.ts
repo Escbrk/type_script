@@ -100,6 +100,8 @@
 //   },
 // };
 
+//!=================================
+
 // type User = {
 //   name: string;
 //   age: number;
@@ -117,6 +119,8 @@
 //   role: "Admin",
 // };
 
+//!=================================
+
 // type Goods = {
 //   [key: string]: number;
 // };
@@ -132,17 +136,39 @@
 //   berry: 10,
 // };
 
-type Interface = {
-  [key: string]: string | number;
-};
+//!=================================
 
-const userInfo: Interface = {
-  name: "Bob",
-  age: 23,
-  country: "Canada",
-};
+// type Interface = {
+//   [key: string]: string | number;
+// };
 
-const bookDetails: Interface = {
-  title: "Bible",
-  pageCount: 350,
-};
+// const userInfo: Interface = {
+//   name: "Bob",
+//   age: 23,
+//   country: "Canada",
+// };
+
+// const bookDetails: Interface = {
+//   title: "Bible",
+//   pageCount: 350,
+// };
+
+//!=================================
+
+// function identity<T>(arg: T): T {
+//   return arg;
+// }
+
+// let output1 = identity<string>("myString");
+// let output2 = identity<number>(100);
+// let output3 = identity<object>({});
+// let output4 = identity<Array<any>>([]);
+
+//!=================================
+
+function revers<T>(items: T[]): T[] {
+  return items.reverse();
+}
+
+let numbers = revers<number>([1, 2, 3, 4, 5]);
+let string = revers<string>(["a", "b", "c", "d"]);
