@@ -170,5 +170,8 @@ function revers<T>(items: T[]): T[] {
   return items.reverse();
 }
 
-let numbers = revers<number>([1, 2, 3, 4, 5]);
-let string = revers<string>(["a", "b", "c", "d"]);
+const numbers = revers<number>([1, 2, 3, 4, 5]);
+console.log(numbers);
+
+const string = revers<string>(["a", "b", "c", "d"]);
+console.log(string);
