@@ -210,24 +210,76 @@
 
 //!=================================
 
-type Todo = {
-  title: string;
-  description: string;
-  completed: boolean;
+// type Todo = {
+//   title: string;
+//   description: string;
+//   completed: boolean;
+// };
+
+// function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>): Todo {
+//   return { ...todo, ...fieldsToUpdate };
+// }
+
+// const todo1: Todo = {
+//   title: "Learn TypeScript",
+//   description: "Study the basics of TypeScript",
+//   completed: false,
+// };
+
+// const todo2 = updateTodo(todo1, {
+//   description: "Study generics in TypeScript",
+// });
+
+// console.log(todo2)
+
+//!=================================
+
+// type User = {
+//   name: string;
+//   age: number;
+// };
+
+// const john: Readonly<User> = {
+//   name: "John",
+//   age: 30,
+// };
+
+// john.age = 31;
+
+// const numbers: ReadonlyArray<number> = [1, 2, 3, 4, 5];
+
+// numbers.push(6);
+// numbers[0] = 0;
+
+//!=================================
+
+// type Person = {
+//   name: string;
+//   age: number;
+//   address: string;
+// };
+
+// type PersonSummary = Pick<Person, "name" | "age">;
+
+// const johnSummary: PersonSummary = {
+//   name: "John",
+//   age: 30,
+// };
+
+//!=================================
+
+type Person = {
+  name: string;
+  age: number;
+  address: string;
 };
 
-function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>): Todo {
-  return { ...todo, ...fieldsToUpdate };
-}
+type PersonWithoutAddress = Omit<Person, "address" | "age">;
 
-const todo1: Todo = {
-  title: "Learn TypeScript",
-  description: "Study the basics of TypeScript",
-  completed: false,
+const john: PersonWithoutAddress = {
+  name: "John",
+  // age: 30,
+  // address: "123 Main St.", // Это свойство тут недопустимо
 };
 
-const todo2 = updateTodo(todo1, {
-  description: "Study generics in TypeScript",
-});
-
-console.log(todo2)
+//!=================================
