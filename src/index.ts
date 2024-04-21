@@ -166,12 +166,68 @@
 
 //!=================================
 
-function revers<T>(items: T[]): T[] {
-  return items.reverse();
+// function revers<T>(items: T[]): T[] {
+//   return items.reverse();
+// }
+
+// const numbers = revers<number>([1, 2, 3, 4, 5]);
+// console.log(numbers);
+
+// const string = revers<string>(["a", "b", "c", "d"]);
+// console.log(string);
+
+//!=================================
+
+// function lengthOfObject<T extends { length: number }>(obj: T): number {
+//   return obj.length;
+// }
+
+// lengthOfObject({ name: "Mango", length: 10 });
+
+// console.log(lengthOfObject({ name: "Mango", length: 10 }));
+
+//!=================================
+// const student = {
+//   name: "John",
+//   age: 25,
+// };
+
+// function getProperty<ObjectType, KeyType extends keyof ObjectType>(
+//   obj: ObjectType,
+//   key: KeyType
+// ): ObjectType[KeyType] {
+//   return obj[key];
+// }
+
+// const studentName = getProperty(student, "name");
+// console.log(studentName);
+
+// const studentAge = getProperty(student, "age");
+// console.log(studentAge);
+
+// const studentAddress = getProperty(student, "address");
+// console.log(studentAddress);
+
+//!=================================
+
+type Todo = {
+  title: string;
+  description: string;
+  completed: boolean;
+};
+
+function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>): Todo {
+  return { ...todo, ...fieldsToUpdate };
 }
 
-const numbers = revers<number>([1, 2, 3, 4, 5]);
-console.log(numbers);
+const todo1: Todo = {
+  title: "Learn TypeScript",
+  description: "Study the basics of TypeScript",
+  completed: false,
+};
 
-const string = revers<string>(["a", "b", "c", "d"]);
-console.log(string);
+const todo2 = updateTodo(todo1, {
+  description: "Study generics in TypeScript",
+});
+
+console.log(todo2)
