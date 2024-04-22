@@ -268,18 +268,33 @@
 
 //!=================================
 
-type Person = {
-  name: string;
-  age: number;
-  address: string;
-};
+// type Person = {
+//   name: string;
+//   age: number;
+//   address: string;
+// };
 
-type PersonWithoutAddress = Omit<Person, "address" | "age">;
+// type PersonWithoutAddress = Omit<Person, "address" | "age">;
 
-const john: PersonWithoutAddress = {
-  name: "John",
-  // age: 30,
-  // address: "123 Main St.", // Это свойство тут недопустимо
-};
+// const john: PersonWithoutAddress = {
+//   name: "John",
+//   // age: 30,
+//   // address: "123 Main St.", // Это свойство тут недопустимо
+// };
 
 //!=================================
+
+//* Record<K, T>
+
+// type CityDatabase = Record<string, number>;
+
+// const database: CityDatabase = {
+//   Kyiv: 2884000,
+//   Kharkiv: 1441000,
+//   Odesa: 1015000,
+// };
+
+// database.Lviv = 721301;
+
+// console.log(database);
+
