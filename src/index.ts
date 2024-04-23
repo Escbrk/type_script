@@ -268,6 +268,13 @@
 
 //!=================================
 
+// interface Person {
+//   name: string;
+//   age: number;
+//   address: string;
+//   location?: string;
+// }
+
 // type Person = {
 //   name: string;
 //   age: number;
@@ -298,3 +305,169 @@
 
 // console.log(database);
 
+//!=================================
+
+// interface Person {
+//   firstName: string;
+//   lastName: string;
+//   age?: number;
+// }
+
+// function great(person: Person) {
+//   console.log(`Hello, ${person.firstName} ${person.lastName}`);
+// }
+
+// const john: Person = {
+//   firstName: "John",
+//   lastName: "Doe",
+// };
+
+// great(john)
+
+//!===================
+
+// type IPerson = {
+//   name: string;
+//   age: number;
+
+//   greet(phrase: string): void;
+// };
+
+// interface IPerson {
+//   name: string;
+//   age: number;
+
+//   greet(phrase: string): void;
+// }
+
+// interface IPilot {
+//   flyMessage(): void;
+// }
+
+// let user: IPerson;
+
+// user = {
+//   name: "Anthony",
+//   age: 21,
+
+//   greet(phrase) {
+//     console.log(`${phrase} ${this.name}`);
+//   },
+// };
+
+// user.greet("Hello everybody, i'm");
+
+//!=================================
+
+// import { IPerson, IPilot } from "./type";
+
+// class Pilot implements IPerson, IPilot {
+//   constructor(public name: string, public age: number) {
+//     if (this.age < 28) {
+//       throw new Error("Pilot is too young");
+//     }
+//   }
+
+//   greet(phrase: string): void {
+//     console.log(`${phrase} ${this.name}`);
+//   }
+
+//   flyMessage(): void {
+//     console.log("Самолет набрал высоту, всем приятного полета!");
+//   }
+
+//   setAutopilot(): void {
+//     console.log("Автопилот включен!");
+//   }
+// }
+
+// abstract class Plane {
+//   protected pilot?: IPilot;
+
+//   public sitInPlane(pilot: IPilot): void {
+//     this.pilot = pilot;
+//   }
+
+//   public abstract startEngine(): boolean;
+// }
+
+// class Boeing extends Plane {
+//   public startEngine(): boolean {
+//     if (!this.pilot) {
+//       throw new Error("No pilot in the cabin");
+//     }
+
+//     console.log("Запуск турбин!");
+
+//     this.pilot.flyMessage();
+//     return true;
+//   }
+// }
+
+// const boeing = new Boeing();
+// const pilot = new Pilot("Anthony", 32);
+
+// pilot.greet("Bac приветствует капитан корабля");
+// pilot.setAutopilot();
+
+// boeing.sitInPlane(pilot);
+// boeing.startEngine();
+
+// class Terrorist implements IPilot {
+//   bluff(phrase: string): void {
+//     console.log(phrase);
+//   }
+
+//   flyMessage(): void {
+//     console.log("Наші вимоги - 9 мільйонів, інакше ми вб'ємо всіх заручників.");
+//   }
+// }
+
+// const pilot2 = new Terrorist();
+// pilot2.bluff("Ви захопили цей літак!");
+// boeing.sitInPlane(pilot2);
+// boeing.startEngine()
+
+//!=================================
+
+// interface ITest {
+//   readonly name: string;
+// }
+
+// const person: ITest = {
+//   name: "Person Name",
+// };
+
+// person.name = "Another Name";
+
+// console.log(person)
+
+//!=================================
+
+// interface IPerson {
+//   name: string;
+//   age: number;
+
+//   greet(phrase: string): void;
+// }
+
+// interface IPilot extends IPerson {
+//   flyMessage(): void;
+// }
+
+//!=================================
+
+interface IPerson {
+  name?: string;
+  age: number;
+}
+
+class Person implements IPerson {
+  name?: string;
+
+  constructor(public age: number) {}
+
+  setName(n: string): void {
+    this.name = n;
+  }
+}
