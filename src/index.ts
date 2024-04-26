@@ -457,17 +457,56 @@
 
 //!=================================
 
-interface IPerson {
-  name?: string;
-  age: number;
-}
+// interface IPerson {
+//   name?: string;
+//   age: number;
+// }
 
-class Person implements IPerson {
-  name?: string;
+// class Person implements IPerson {
+//   name?: string;
 
-  constructor(public age: number) {}
+//   constructor(public age: number) {}
 
-  setName(n: string): void {
-    this.name = n;
-  }
-}
+//   setName(n: string): void {
+//     this.name = n;
+//   }
+// }
+
+//!=================================
+
+// class ClassA {
+//   public myMethod() {
+//     return "i'm a class A";
+//   }
+// }
+
+// class ClassB extends ClassA {}
+
+// const b = new ClassB();
+
+// console.log(b.myMethod());
+
+//!=================================
+
+// class classA {
+//   private process1() {
+//     return 1;
+//   }
+//   private process2() {
+//     return 2;
+//   }
+//   private process3() {
+//     return 3;
+//   }
+
+//   public superProcess() {
+//     return this.process1() + this.process2() + this.process3();
+//   }
+// }
+
+// const b = new classA()
+
+// console.log(b.superProcess())
+
+//!=================================
+
