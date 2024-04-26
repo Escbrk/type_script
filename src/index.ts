@@ -510,3 +510,34 @@
 
 //!=================================
 
+// class House {
+//   street: string;
+
+//   constructor(n: string) {
+//     this.street = n;
+//   }
+
+//   showAddress(this: House) {
+//     console.log(`Address: ${this.street}`);
+//   }
+// }
+
+// const house = new House("Main street");
+
+// house.showAddress();
+
+// const houseCopy = { street: "Dummy", showAddress: house.showAddress };
+
+// houseCopy.showAddress();
+
+//!=================================
+
+class A {
+  private someProperty = "str";
+}
+
+class B extends A {
+  showProperty() {
+    console.log(this.someProperty);
+  }
+}
