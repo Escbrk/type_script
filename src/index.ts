@@ -763,24 +763,484 @@
 
 //!=================================
 
-class Animal {
-  constructor(public name: string) {}
+// class Animal {
+//   constructor(public name: string) {}
 
-  say() {
-    console.log("Nothing to say");
-  }
-}
+//   say() {
+//     console.log("Nothing to say");
+//   }
+// }
 
-class Cat extends Animal {
-  constructor(name: string, private speed: number) {
-    super(name);
-  }
+// class Cat extends Animal {
+//   constructor(name: string, private speed: number) {
+//     super(name);
+//   }
 
-  say() {
-    console.log("Meow!");
-  }
+//   say() {
+//     console.log("Meow!");
+//   }
 
-  run(time: number) {
-    return `${this.name} was runing with speed ${this.speed} during ${time} second`;
-  }
+//   run(time: number) {
+//     return `${this.name} was runing with speed ${this.speed} during ${time} second`;
+//   }
+// }
+
+//!=================================
+
+// interface IPerson {
+//   name: string;
+//   age: number;
+//   greet(phrase: string): void;
+// }
+
+// class Person implements IPerson {
+//   constructor(public name: string, public age: number) {}
+
+//   greet(phrase: string): void {
+//     console.log(`${phrase}, my name is ${this.name}`);
+//   }
+// }
+
+// const pablo = new Person("Pablo", 27);
+
+// pablo.greet('Hello')
+
+//!=================================
+
+// type ItemType = {
+//   name: string;
+// };
+
+// class Catalog {
+//   showCatalog(items: ItemType[]) {
+//     items.forEach((item) => {
+//       console.log(item.name);
+//     });
+//   }
+// }
+
+// class Items {
+//   private items: ItemType[] = [];
+//   setItem(name: string) {
+//     this.items.push({ name });
+//   }
+
+//   getItems(): ItemType[] {
+//     return this.items;
+//   }
+// }
+
+// const items = new Items();
+// const catalog = new Catalog();
+
+// items.setItem("Catalog 1");
+// items.setItem("Catalog 2");
+// items.setItem("Catalog 3");
+
+// catalog.showCatalog(items.getItems())
+
+//!=================================
+
+// class DB {
+//   connection() {
+//     console.log("DB connected");
+//   }
+// }
+
+// class Server {
+//   constructor(private database: DB) {}
+
+//   init() {
+//     this.database.connection();
+//   }
+// }
+
+// const db = new DB();
+// const server = new Server(db);
+
+// server.init();
+
+//!=================================
+//* Агрегація в UML
+// class Person {
+//   constructor(public name: string) {}
+// }
+
+// class Home {
+//   private guests: Person[] = [];
+
+//   addGuests(guest: Person) {
+//     this.guests.push(guest);
+//   }
+
+//   showGuests() {
+//     this.guests.map((guest) => console.log(guest.name));
+//   }
+// }
+
+// const home = new Home();
+
+// const guest1 = new Person("Max");
+// const guest2 = new Person("Pablo");
+// const guest3 = new Person("Marco");
+
+// home.addGuests(guest1);
+// home.addGuests(guest2);
+// home.addGuests(guest3);
+
+// home.showGuests();
+
+//!=================================
+//* Композиція  в UML
+
+// class Person {
+//   constructor(public name: string) {}
+// }
+
+// class Home {
+//   private tenants: Person[] = [];
+
+//   addTenant(name: string) {
+//     const tenant = new Person(name);
+//     this.tenants.push(tenant);
+//   }
+
+//   showTenant() {
+//     this.tenants.map((tenant) => console.log(tenant.name));
+//   }
+// }
+
+// const home = new Home();
+
+// home.addTenant("Max");
+// home.addTenant("Pablo");
+// home.addTenant("Marco");
+
+// home.showTenant();
+
+//!=================================
+//* Example
+
+// class Captain {
+//   constructor(public name: string) {}
+// }
+
+// class Ship {
+//   private captain: Captain;
+
+//   setCaptain(name: string) {
+//     const captain = new Captain(name);
+//     this.captain = captain;
+//   }
+
+//   sink() {
+//     console.log(
+//       `Ship is sinking! Captain ${this.captain.name} goes down with the ship!`
+//     );
+//   }
+// }
+
+// const ship = new Ship();
+
+// ship.setCaptain("John");
+// ship.sink();
+
+//!=================================
+//* Singleton
+
+// class App {
+//   private static instance: App;
+
+//   constructor() {
+//     if (!App.instance) {
+//       App.instance = this;
+//     }
+
+//     return App.instance;
+//   }
+// }
+
+//!=================================
+//* Factory
+
+// interface PaymentProcessor {
+//   validate(data: any): boolean;
+//   pay(amount: number): void;
+// }
+
+// class CreditCardProcessor implements PaymentProcessor {
+//   validate(data: any): boolean {
+//     return true;
+//   }
+
+//   pay(amount: number): void {
+//     console.log(`Paid ${amount} using Credit Card!`);
+//   }
+// }
+
+// class PayPalProcessor implements PaymentProcessor {
+//   validate(data: any): boolean {
+//     return true;
+//   }
+
+//   pay(amount: number): void {
+//     console.log(`Paid ${amount} using PayPal!`);
+//   }
+// }
+
+// class BitcoinProcessor implements PaymentProcessor {
+//   validate(data: any): boolean {
+//     return true;
+//   }
+
+//   pay(amount: number): void {
+//     console.log(`Paid ${amount} using Bitcoin!`);
+//   }
+// }
+
+// class PaymentProcessorFactory {
+//   static createProcessor(type: string): PayPalProcessor {
+//     switch (type) {
+//       case "CreditCard".toLowerCase():
+//         return new CreditCardProcessor();
+//       case "PayPal".toLowerCase():
+//         return new PayPalProcessor();
+//       case "Bitcoin".toLowerCase():
+//         return new BitcoinProcessor();
+//       default:
+//         throw new Error(`Payment method ${type} is not supported!`);
+//     }
+//   }
+// }
+
+// const processor = PaymentProcessorFactory.createProcessor("bitcoin");
+
+// processor.pay(100);
+
+//!=================================
+//* Builder
+
+// class Car {
+//   constructor(
+//     public model: string,
+
+//     public year: number,
+
+//     public color: string
+//   ) {}
+// }
+
+// class CarBuilder {
+//   private model: string;
+
+//   private year: number;
+
+//   private color: string;
+
+//   setModel(model: string): CarBuilder {
+//     this.model = model;
+//     return this;
+//   }
+
+//   setYear(year: number) {
+//     this.year = year;
+//     return this;
+//   }
+
+//   setColor(color: string) {
+//     this.color = color;
+//     return this;
+//   }
+
+//   build(): Car {
+//     return new Car(this.model, this.year, this.color);
+//   }
+// }
+
+// const builder = new CarBuilder();
+
+// const car = builder
+//   .setModel("Tesla Model S")
+//   .setYear(2023)
+//   .setColor("Red")
+//   .build();
+
+// console.log(car);
+
+//* Example
+
+// class QueryBuilder {
+//   private table: string = "";
+//   private whereParams: string[] = [];
+//   private orderBy: string = "";
+
+//   from(table: string): QueryBuilder {
+//     this.table = table;
+//     return this;
+//   }
+
+//   where(condition: string): QueryBuilder {
+//     this.whereParams.push(condition);
+//     return this;
+//   }
+
+//   order(condition: string): QueryBuilder {
+//     this.orderBy = condition;
+//     return this;
+//   }
+
+//   build(): DatabaseQuery {
+//     return new DatabaseQuery(this.table, this.whereParams, this.orderBy);
+//   }
+// }
+
+// class DatabaseQuery {
+//   constructor(
+//     private table: string,
+//     private whereParams: string[],
+//     private orderBy: string
+//   ) {}
+
+//   query(): void {
+//     let query = `SELECT * FROM ${this.table}`;
+
+//     if (this.whereParams.length) {
+//       query += ` WHERE ${this.whereParams.join(" AND ")}`;
+//     }
+
+//     if (this.orderBy) {
+//       query += ` ORDER BY ${this.orderBy}`;
+//     }
+
+//     console.log(`Executing query: ${query}`);
+//   }
+// }
+
+// const builder = new QueryBuilder();
+// const dbQuery = builder
+//   .from("Users")
+//   .where("age > 21")
+//   .where("status = 'active'")
+//   .order("lastName")
+//   .build();
+
+//   dbQuery.query()
+
+//!=================================
+//* Adapter
+
+// class OldService {
+//   public oldRequest(): string {
+//     return "Old Service Request";
+//   }
+// }
+
+// interface NewInterface {
+//   request(): string;
+// }
+
+// class Adapter implements NewInterface {
+//   constructor(private oldService: OldService) {}
+
+//   public request(): string {
+//     const result = this.oldService.oldRequest();
+
+//     return `Adapter: (TRANSLATED) ${result}`;
+//   }
+// }
+
+// class Client {
+//   constructor(private newInterface: NewInterface) {}
+
+//   public useService(): void {
+//     console.log(this.newInterface.request());
+//   }
+// }
+
+// const oldService = new OldService();
+// const adapter = new Adapter(oldService);
+// const client = new Client(adapter);
+
+// client.useService()
+
+//!=================================
+//* Decorator
+
+// interface Coffee {
+//   cost(): number;
+//   description(): string;
+// }
+
+// class SimpleCoffee implements Coffee {
+//   cost(): number {
+//     return 10;
+//   }
+
+//   description(): string {
+//     return "Simple coffee";
+//   }
+// }
+
+// class CoffeeDecorator implements Coffee {
+//   constructor(protected coffee: Coffee) {}
+
+//   cost(): number {
+//     return this.coffee.cost();
+//   }
+
+//   description(): string {
+//     return this.coffee.description();
+//   }
+// }
+
+// class MilkDecorator extends CoffeeDecorator {
+//   cost(): number {
+//     return this.coffee.cost() + 2;
+//   }
+
+//   description(): string {
+//     return this.coffee.description() + ", milk";
+//   }
+// }
+
+// class SugarDecorator extends CoffeeDecorator {
+//   cost(): number {
+//     return this.coffee.cost() + 1;
+//   }
+
+//   description(): string {
+//     return this.coffee.description() + ", sugar";
+//   }
+// }
+
+// let coffee: Coffee = new SimpleCoffee();
+// coffee = new MilkDecorator(coffee);
+// coffee = new SugarDecorator(coffee);
+
+// console.log(`${coffee.description()} - ${coffee.cost()} dollars`);
+
+//!=================================
+//* Facade
+
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+type Address = {
+  userId: number;
+  street: string;
+  city: string;
+  country: string;
+};
+
+type PaymentData = {
+  userId: number;
+  cardNumber: string;
+  expiryDate: string;
+};
+
+class UserService {
+  
 }
