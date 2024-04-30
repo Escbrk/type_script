@@ -1222,25 +1222,25 @@
 //!=================================
 //* Facade
 
-type User = {
-  id: number;
-  name: string;
-  email: string;
-};
+// type User = {
+//   id: number;
+//   name: string;
+//   email: string;
+// };
 
-type Address = {
-  userId: number;
-  street: string;
-  city: string;
-  country: string;
-};
+// type Address = {
+//   userId: number;
+//   street: string;
+//   city: string;
+//   country: string;
+// };
 
-type PaymentData = {
-  userId: number;
-  cardNumber: string;
-  expiryDate: string;
-};
+// type PaymentData = {
+//   userId: number;
+//   cardNumber: string;
+//   expiryDate: string;
+// };
 
-class UserService {
+// class UserService {
   
-}
+// }
